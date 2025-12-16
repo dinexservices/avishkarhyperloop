@@ -16,14 +16,14 @@ export default function Hero() {
       if (ticking.current) return;
       ticking.current = true;
 
-      window.requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         const scrollY = window.scrollY;
-        const newOpacity = Math.max(0, 1 - scrollY / 500);
-        const newTranslateY = -scrollY * 0.25;
+        const opacity = Math.max(0, 1 - scrollY / 450);
+        const translateY = -scrollY * 0.28;
 
         setHeroStyle({
-          opacity: newOpacity,
-          transform: `translateY(${newTranslateY}px)`,
+          opacity,
+          transform: `translateY(${translateY}px)`,
         });
 
         ticking.current = false;
@@ -35,57 +35,54 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="w-full relative z-10">
-      <section className="min-h-screen w-full flex items-start pt-32 md:pt-27 relative px-6 md:px-12 lg:px-24 overflow-hidden bg-black">
+    <section className="relative w-full min-h-screen overflow-hidden bg-black">
+      {/* ================= BACKGROUND VIDEO ================= */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-85"
+        >
+          <source
+            src="https://avishkarhyperloop.com/videos/VfxVideo.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
 
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0 w-full h-full">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover opacity-80"
-          >
-            <source
-              src="https://avishkarhyperloop.com/videos/VfxVideo.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+      {/* ================= OVERLAYS ================= */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-green-900/10 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.65)_100%)]" />
+      </div>
 
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-green-900/10 mix-blend-overlay" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
-        </div>
-
-        {/* Content */}
+      {/* ================= CONTENT ================= */}
+      <div className="relative z-10 min-h-screen flex items-start pt-28 sm:pt-32 px-6 sm:px-10 lg:px-24">
         <div
-          className="
-            flex flex-col
-            items-start
-            text-left
-            space-y-4 md:space-y-6
-            z-10 max-w-2xl
-            will-change-transform
-            relative
-          "
+          className="flex flex-col items-start space-y-6 sm:space-y-8 max-w-4xl"
           style={heroStyle}
         >
-          <span className="text-green-500 text-[clamp(0.625rem,0.5rem+0.51vw,0.75rem)] font-tech tracking-[0.4em] uppercase opacity-90 animate-pulse">
+          {/* Eyebrow */}
+          <span className="text-green-400 font-tech uppercase tracking-[0.5em] text-[clamp(0.8rem,2.8vw,1rem)] opacity-90">
             Welcome to the Future
           </span>
 
-          <div className="w-24 h-[2px] bg-gradient-to-r from-green-500 to-green-300 shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
+          {/* Divider */}
+          <div className="w-32 h-[2px] bg-gradient-to-r from-green-500 to-green-300 shadow-[0_0_18px_rgba(34,197,94,0.9)]" />
 
-          <h1 className="text-[clamp(2.5rem,0.9rem+6.7vw,7rem)] font-bold font-tech tracking-tighter text-white leading-[0.85] drop-shadow-2xl">
+          {/* ================= MAIN HEADLINE ================= */}
+          <h1 className="
+            font-tech font-extrabold text-white tracking-tight leading-[0.78]
+            text-[clamp(2.9rem,15vw,9.1rem)]
+            drop-shadow-[0_20px_60px_rgba(0,0,0,0.85)]
+          ">
             HYPERLOOP
             <br />
-            <span className="font-light">
+            <span className="font-light block">
               FOR{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-600">
                 INDIA
@@ -93,25 +90,43 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="max-w-md text-gray-300 font-light text-[clamp(0.875rem,0.75rem+0.51vw,1rem)] leading-relaxed rounded-lg">
+          {/* ================= DESCRIPTION ================= */}
+          <p className="
+            max-w-2xl text-gray-300 font-light
+            text-[clamp(1.05rem,4.5vw,1.25rem)]
+            leading-relaxed
+          ">
             Pioneering the fifth mode of transport. Avishkar Hyperloop is
-            building a sustainable, high-speed future for global connectivity.
+            engineering a sustainable, ultra-high-speed future for global
+            connectivity.
           </p>
 
-          <div className="pt-6">
-            <button className="group relative px-6 py-3 md:px-8 md:py-4 bg-green-600/10 border border-green-500 text-white font-bold font-tech text-[clamp(0.75rem,0.63rem+0.51vw,0.875rem)] tracking-widest overflow-hidden transition-all hover:bg-green-500 hover:text-black hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">
-              <span className="relative z-10 flex items-center gap-2">
+          {/* ================= CTA ================= */}
+          <div className="pt-10">
+            <button className="
+              group relative
+              px-10 py-5
+              border border-green-500
+              bg-green-500/10
+              text-white font-tech font-bold
+              text-[clamp(0.95rem,4vw,1.1rem)]
+              tracking-[0.25em]
+              overflow-hidden
+              transition-all duration-300
+              hover:bg-green-500 hover:text-black
+              hover:shadow-[0_0_36px_rgba(34,197,94,0.55)]
+            ">
+              <span className="relative z-10 flex items-center gap-3">
                 DISCOVER OUR POD
                 <ChevronRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
+                  size={20}
+                  className="transition-transform group-hover:translate-x-1"
                 />
               </span>
             </button>
           </div>
         </div>
-
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
