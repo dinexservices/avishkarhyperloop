@@ -6,8 +6,8 @@ const TEAM_DATA = [
   {
     subsystem: "Business and SER",
     members: [
-      { name: "THARUN RISHWANTH R M S", role: "Sub Head", photo: "/team/Tharun.png" },
-      { name: "Pandey Sachin Ajeet", role: "Sub Head", photo: "/team/pandey.png" },
+      { name: "THARUN RISHWANTH R M S", role: "Sub Head", photo: "/team/tharun.png" },
+      { name: "Pandey Sachin Ajeet", role: "Sub Head", photo: "/team/Pandey.png" },
       { name: "Achutha Narayan R", role: "Team Member", photo: "/team/Achutha Narayan.png" },
       { name: "Adhithya S", role: "Team Member", photo: "" },
       { name: "Gaganram P M", role: "Team Member", photo: "" },
@@ -27,7 +27,7 @@ const TEAM_DATA = [
       { name: "Praveen Babu G", role: "Sub Head", photo: "/team/PraveenBabu.png" },
       { name: "Gautam D", role: "Sub Head", photo: "" },
       { name: "Nidharshana Krishnan C", role: "Sub Head", photo: "" },
-      { name: "Abhay Gokhale", role: "Team Member", photo: "/team/abhay.png" },
+      { name: "Abhay Gokhale", role: "Team Member", photo: "/team/Abhay.png" },
       { name: "Arjun", role: "Team Member", photo: "/team/Arjun.png" },
       { name: "B Pradyumnan", role: "Team Member", photo: "/team/Pradyumnan.png" },
       { name: "Dhruv Sawant", role: "Team Member", photo: "/team/Dhruv Rahul.png" },
@@ -49,11 +49,11 @@ const TEAM_DATA = [
   {
     subsystem: "Infrastructure",
     members: [
-      { name: "Bhupender Singh Bisht", role: "Team Member", photo: "/team/bhupender.png" },
+      { name: "Bhupender Singh Bisht", role: "Team Member", photo: "/team/Bhupender.png" },
       { name: "Aarohi Vanjare", role: "Team Member", photo: "/team/Aarohi.png" },
-      { name: "Juttuka Jayapaul", role: "Team Member", photo: "/team/juttuka.png" },
+      { name: "Juttuka Jayapaul", role: "Team Member", photo: "/team/Juttuka.png" },
       { name: "Sanvi Mittal", role: "Team Member", photo: "/team/Sanvi.png" },
-      { name: "Dhairya Gandhi", role: "Team Member", photo: "/team/dhairya.png" },
+      { name: "Dhairya Gandhi", role: "Team Member", photo: "/team/Dhairya.png" },
     ],
   },
 
@@ -69,7 +69,7 @@ const TEAM_DATA = [
     ],
   },
 
-  {
+  { 
     subsystem: "Mechanical",
     members: [
       { name: "Mohamed M", role: "Team Head", photo: "" },
