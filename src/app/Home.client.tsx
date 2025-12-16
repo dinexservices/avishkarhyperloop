@@ -1,38 +1,45 @@
-"use client"
+"use client";
 
-import Hero from "@/components/Home/Hero";
-import { TechnologyParallax } from "@/components/Home/TechnologyParallax";
+import dynamic from "next/dynamic";
 
-import { ParallaxSection } from "@/components/Home/ParallaxSection";
-import { Section } from "lucide-react";
-import { Partners } from "@/components/Home/Partners";
+/* 🚨 Disable SSR for animated sections */
+const Hero = dynamic(() => import("@/components/Home/Hero"), {
+  ssr: false,
+});
 
+const TechnologyParallax = dynamic(
+  () => import("@/components/Home/TechnologyParallax").then(m => m.TechnologyParallax),
+  { ssr: false }
+);
+
+const ParallaxSection = dynamic(
+  () => import("@/components/Home/ParallaxSection").then(m => m.ParallaxSection),
+  { ssr: false }
+);
+
+const Partners = dynamic(
+  () => import("@/components/Home/Partners").then(m => m.Partners),
+  { ssr: false }
+);
 
 export default function Home() {
-
-
-    return (
-
+  return (
     <>
       <section>
-        <Hero/>
+        <Hero />
       </section>
+
       <section>
-        <TechnologyParallax/>
+        <TechnologyParallax />
       </section>
-        <section>   
-        <ParallaxSection/>
-        </section>  
-        <section>
-            <Partners/>
-        </section>
 
- 
+      <section>
+        <ParallaxSection />
+      </section>
 
+      <section>
+        <Partners />
+      </section>
     </>
-
   );
-};
-
-
-
+}

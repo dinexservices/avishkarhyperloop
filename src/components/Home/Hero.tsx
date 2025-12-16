@@ -19,7 +19,7 @@ export default function Hero() {
       window.requestAnimationFrame(() => {
         const scrollY = window.scrollY;
         const newOpacity = Math.max(0, 1 - scrollY / 500);
-        const newTranslateY = -scrollY * 0.25; // slightly reduced factor
+        const newTranslateY = -scrollY * 0.25;
 
         setHeroStyle({
           opacity: newOpacity,
@@ -36,7 +36,8 @@ export default function Hero() {
 
   return (
     <div className="w-full relative z-10">
-      <section className="min-h-screen w-full flex items-start md:items-center pt-32 md:pt-0 relative px-6 md:px-12 lg:px-24 overflow-hidden bg-black">
+      <section className="min-h-screen w-full flex items-start pt-32 md:pt-0 relative px-6 md:px-12 lg:px-24 overflow-hidden bg-black">
+
         {/* Background Video */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <video
@@ -64,14 +65,20 @@ export default function Hero() {
 
         {/* Content */}
         <div
-          className="flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6 z-10 max-w-2xl will-change-transform relative"
+          className="
+            flex flex-col
+            items-start
+            text-left
+            space-y-4 md:space-y-6
+            z-10 max-w-2xl
+            will-change-transform
+            relative
+          "
           style={heroStyle}
         >
-          <div className="flex items-center gap-4">
-            <span className="text-green-500 text-[clamp(0.625rem,0.5rem+0.51vw,0.75rem)] font-tech tracking-[0.4em] uppercase opacity-90 animate-pulse">
-              Welcome to the Future
-            </span>
-          </div>
+          <span className="text-green-500 text-[clamp(0.625rem,0.5rem+0.51vw,0.75rem)] font-tech tracking-[0.4em] uppercase opacity-90 animate-pulse">
+            Welcome to the Future
+          </span>
 
           <div className="w-24 h-[2px] bg-gradient-to-r from-green-500 to-green-300 shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
 
@@ -86,7 +93,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="max-w-md text-gray-300 font-light text-[clamp(0.875rem,0.75rem+0.51vw,1rem)] leading-relaxed p-4 backdrop-blur-sm bg-black/10 rounded-lg">
+          <p className="max-w-md text-gray-300 font-light text-[clamp(0.875rem,0.75rem+0.51vw,1rem)] leading-relaxed rounded-lg">
             Pioneering the fifth mode of transport. Avishkar Hyperloop is
             building a sustainable, high-speed future for global connectivity.
           </p>
@@ -103,6 +110,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
+
       </section>
     </div>
   );

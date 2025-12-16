@@ -119,7 +119,7 @@ export const Footer: React.FC = () => {
                 { icon: Linkedin, href: '#' },
                 { icon: Instagram, href: '#' },
                 { icon: Twitter, href: '#' },
-                { icon: Github, href: '#' },
+                // { icon: Github, href: '#' },
               ].map((social, idx) => (
                 <a
                   key={idx}
