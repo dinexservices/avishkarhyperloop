@@ -78,9 +78,9 @@ export default function Hero() {
 
           {/* ================= MAIN HEADLINE ================= */}
           <h1 className="
-            font-tech font-extrabold text-white tracking-tighter leading-[0.85]
-            text-[clamp(3.5rem,14vw,8.5rem)]
-            drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]
+            font-tech font-extrabold text-white tracking-tight leading-[0.78]
+            text-[clamp(2.9rem,15vw,9.1rem)]
+            drop-shadow-[0_20px_60px_rgba(0,0,0,0.85)]
           ">
             HYPERLOOP
             <br />
