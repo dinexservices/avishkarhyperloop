@@ -42,3 +42,12 @@ export interface PodModel {
     levitation: string;
   };
 }
+
+export interface Article {
+  id: string;
+  title: string;
+  date: string;
+  link: string;
+  category?: string;
+}
+

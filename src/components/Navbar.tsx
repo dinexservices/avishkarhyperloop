@@ -21,10 +21,12 @@ const orderedLabels = [
 const menuVariants: Variants = {
   open: {
     opacity: 1,
+    pointerEvents: "auto",
     transition: { duration: 0.5 }
   },
   closed: {
     opacity: 0,
+    pointerEvents: "none",
     transition: { duration: 0.3 }
   }
 };
@@ -59,7 +61,7 @@ export default function Navbar() {
     orderedLabels
       .map((label) => NAV_ITEMS.find((item) => item.label === label))
       .filter(Boolean) as { label: string; href: string }[]
-  , []);
+    , []);
 
   // FIXED cleanup return type
   useEffect(() => {
@@ -121,9 +123,8 @@ export default function Navbar() {
                   setActive(item.label);
                   setOpen(false);
                 }}
-                className={`group uppercase tracking-[0.22em] text-2xl sm:text-3xl md:text-4xl transition-all duration-500 relative overflow-visible ${
-                  active === item.label ? "text-white" : "text-green-400/80 hover:text-white"
-                }`}
+                className={`group uppercase tracking-[0.22em] text-2xl sm:text-3xl md:text-4xl transition-all duration-500 relative overflow-visible ${active === item.label ? "text-white" : "text-green-400/80 hover:text-white"
+                  }`}
               >
                 <span className="relative inline-block glitch-text" data-text={item.label}>
                   {item.label}

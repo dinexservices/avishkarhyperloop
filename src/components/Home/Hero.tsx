@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { ChevronRight } from "lucide-react";
+// Video moved to public folder
+const videovfx = "/videos/VfxVideo.mp4";
 
 export default function Hero() {
   const [heroStyle, setHeroStyle] = useState({
@@ -18,8 +20,9 @@ export default function Hero() {
 
       requestAnimationFrame(() => {
         const scrollY = window.scrollY;
-        const opacity = Math.max(0, 1 - scrollY / 450);
-        const translateY = -scrollY * 0.28;
+        // Fade out slightly faster to keep the transition smooth
+        const opacity = Math.max(0, 1 - scrollY / 500);
+        const translateY = -scrollY * 0.2;
 
         setHeroStyle({
           opacity,
@@ -35,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-black">
+    <section className="relative w-full min-h-screen overflow-hidden bg-black flex items-center justify-center">
       {/* ================= BACKGROUND VIDEO ================= */}
       <div className="absolute inset-0 z-0">
         <video
@@ -43,10 +46,10 @@ export default function Hero() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-85"
+          className="w-full h-full object-cover opacity-70"
         >
           <source
-            src="https://avishkarhyperloop.com/videos/VfxVideo.mp4"
+            src={videovfx}
             type="video/mp4"
           />
         </video>
@@ -54,37 +57,36 @@ export default function Hero() {
 
       {/* ================= OVERLAYS ================= */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-green-900/10 mix-blend-overlay" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.65)_100%)]" />
+        {/* Darker Vignette for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-10 min-h-screen flex items-start pt-28 sm:pt-32 px-6 sm:px-10 lg:px-24">
+      <div className="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-24">
         <div
-          className="flex flex-col items-start space-y-6 sm:space-y-8 max-w-4xl"
+          className="flex flex-col items-center text-center space-y-6 sm:space-y-10"
           style={heroStyle}
         >
           {/* Eyebrow */}
-          <span className="text-green-400 font-tech uppercase tracking-[0.5em] text-[clamp(0.8rem,2.8vw,1rem)] opacity-90">
-            Welcome to the Future
-          </span>
-
-          {/* Divider */}
-          <div className="w-32 h-[2px] bg-gradient-to-r from-green-500 to-green-300 shadow-[0_0_18px_rgba(34,197,94,0.9)]" />
+          <div className="flex flex-col items-center space-y-4">
+            <span className="text-green-400 font-tech uppercase tracking-[0.4em] text-[clamp(0.7rem,2vw,0.9rem)] opacity-90">
+              Welcome to the Future
+            </span>
+            <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-green-500 to-transparent shadow-[0_0_15px_rgba(34,197,94,0.8)]" />
+          </div>
 
           {/* ================= MAIN HEADLINE ================= */}
           <h1 className="
-            font-tech font-extrabold text-white tracking-tight leading-[0.78]
-            text-[clamp(2.9rem,15vw,9.1rem)]
-            drop-shadow-[0_20px_60px_rgba(0,0,0,0.85)]
+            font-tech font-extrabold text-white tracking-tighter leading-[0.85]
+            text-[clamp(3.5rem,14vw,8.5rem)]
+            drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]
           ">
             HYPERLOOP
             <br />
-            <span className="font-light block">
+            <span className="font-light block mt-2">
               FOR{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-500">
                 INDIA
               </span>
             </span>
@@ -93,8 +95,9 @@ export default function Hero() {
           {/* ================= DESCRIPTION ================= */}
           <p className="
             max-w-2xl text-gray-300 font-light
-            text-[clamp(1.05rem,4.5vw,1.25rem)]
-            leading-relaxed
+            text-[clamp(1rem,3vw,1.15rem)]
+            leading-relaxed mx-auto
+            px-4
           ">
             Pioneering the fifth mode of transport. Avishkar Hyperloop is
             engineering a sustainable, ultra-high-speed future for global
@@ -102,30 +105,35 @@ export default function Hero() {
           </p>
 
           {/* ================= CTA ================= */}
-          <div className="pt-10">
+          <div className="pt-6 sm:pt-10">
             <button className="
               group relative
-              px-10 py-5
-              border border-green-500
-              bg-green-500/10
+              px-8 py-4 sm:px-12 sm:py-5
+              border border-green-500/50
+              bg-green-500/5
               text-white font-tech font-bold
-              text-[clamp(0.95rem,4vw,1.1rem)]
-              tracking-[0.25em]
-              overflow-hidden
-              transition-all duration-300
+              text-[clamp(0.85rem,2.5vw,1rem)]
+              tracking-[0.2em]
+              transition-all duration-500
               hover:bg-green-500 hover:text-black
-              hover:shadow-[0_0_36px_rgba(34,197,94,0.55)]
+              hover:shadow-[0_0_50px_rgba(34,197,94,0.4)]
+              rounded-sm
             ">
               <span className="relative z-10 flex items-center gap-3">
                 DISCOVER OUR POD
                 <ChevronRight
-                  size={20}
-                  className="transition-transform group-hover:translate-x-1"
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-2"
                 />
               </span>
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Optional: Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+        <div className="w-[1px] h-12 bg-gradient-to-b from-green-500 to-transparent" />
       </div>
     </section>
   );
