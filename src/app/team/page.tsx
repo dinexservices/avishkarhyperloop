@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import TeamYearNavbar, { YearKey } from "./TeamYearNavbar";
+import PreviousTeams from "./PreviousTeams";
 
 const TEAM_DATA = [
   {
@@ -69,7 +71,7 @@ const TEAM_DATA = [
     ],
   },
 
-  { 
+  {
     subsystem: "Mechanical",
     members: [
       { name: "Mohamed M", role: "Team Head", photo: "" },
@@ -111,22 +113,23 @@ const TEAM_DATA = [
 ];
 
 export default function TeamPage() {
-  // Scroll reset only once
+  // ✅ FIX 1: default is PRESENT
+  const [activeYear, setActiveYear] = useState<YearKey>("PRESENT");
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
-  // Memoized data (performance)
   const data = useMemo(() => TEAM_DATA, []);
 
   return (
     <div className="w-full min-h-screen bg-[#050505] text-white pt-24">
-      {/* PAGE HEADER */}
+      {/* HEADER */}
       <section className="max-w-7xl mx-auto px-6 mb-24 text-center">
-        <span className="text-green-500 font-tech tracking-[0.5em] text-xs uppercase block mb-4">
+        <span className="text-green-500 tracking-[0.5em] text-xs uppercase block mb-4">
           Our People
         </span>
-        <h1 className="text-5xl md:text-7xl font-tech font-bold tracking-tight">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
           THE TEAM
         </h1>
         <p className="mt-6 text-gray-400 max-w-2xl mx-auto">
@@ -135,47 +138,52 @@ export default function TeamPage() {
         </p>
       </section>
 
-      {/* SUBSYSTEM SECTIONS */}
-      <div className="space-y-32 pb-32">
-        {data.map((group, idx) => (
-          <section key={idx} className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-6xl font-tech font-bold tracking-tight">
-                {group.subsystem.toUpperCase()}
-              </h2>
-              <div className="w-24 h-[2px] bg-green-500 mt-4" />
-            </div>
+      {/* YEAR NAV */}
+      <TeamYearNavbar activeYear={activeYear} setActiveYear={setActiveYear} />
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-              {group.members.map((member, i) => (
-                <div
-                  key={i}
-                  className="group bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-green-500/50 transition-all"
-                >
-                  <div className="aspect-square rounded-xl overflow-hidden mb-4 bg-black">
-                    {member.photo ? (
-                      <img
-                        src={member.photo}
-                        alt={member.name}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover transition-all duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-neutral-900" />
-                    )}
+      {/* ✅ FIX 2: PRESENT check */}
+      {activeYear === "PRESENT" ? (
+        <div className="space-y-32 pb-32">
+          {data.map((group, idx) => (
+            <section key={idx} className="max-w-7xl mx-auto px-6">
+              <div className="mb-16">
+                <h2 className="text-4xl md:text-6xl font-bold">
+                  {group.subsystem.toUpperCase()}
+                </h2>
+                <div className="w-24 h-[2px] bg-green-500 mt-4" />
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                {group.members.map((member, i) => (
+                  <div
+                    key={i}
+                    className="bg-white/5 border border-white/10 rounded-2xl p-4"
+                  >
+                    <div className="aspect-square rounded-xl overflow-hidden mb-4 bg-black">
+                      {member.photo ? (
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-neutral-900" />
+                      )}
+                    </div>
+
+                    <h4 className="font-bold text-sm">{member.name}</h4>
+                    <p className="text-gray-400 text-xs mt-1">
+                      {member.role}
+                    </p>
                   </div>
-
-                  <h4 className="font-tech font-bold text-sm">{member.name}</h4>
-                  <p className="text-gray-400 text-xs mt-1 uppercase tracking-wide">
-                    {member.role}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      ) : (
+        <PreviousTeams year={activeYear} />
+      )}
     </div>
   );
 }
