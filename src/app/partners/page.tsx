@@ -249,7 +249,7 @@ const PARTNERS: Edition[] = [
     sponsors: [
       { name: "Deloitte", role: "Title Sponsor", logo: "/partners/379251LOGO.jpg" },
       { name: "Comsol", role: "Gold Sponsor", logo: "/partners/Comsol.png" },
-      { name: "Ansys", role: "Silver Sponsor · Simulation", logo: "/partners/ANSYS_logo.png" },
+      { name: "Ansys", role: "Silver Sponsor · Simulation", logo: "/partners/ansys.png" },
       { name: "Swagelok", role: "Silver Sponsor · Pneumatics", logo: "/partners/swagelok.png" },
       { name: "Arus MR Tech", role: "Supporting · Suspension", logo: "/partners/arus.png" },
       { name: "Benewake", role: "Supporting · Sensing", logo: "/partners/benewake.png" },
@@ -282,7 +282,7 @@ const PARTNERS: Edition[] = [
     sponsors: [
       { name: "Tube Investments of India", role: "Scalability Partner", logo: "/partners/tube-investments.svg" },
       { name: "L&T Heavy Civil Infrastructure", role: "Partner", logo: "/partners/images.jpeg" },
-      { name: "Arcelor Mittal", role: "Materials Partner", logo: "/partners/arcelor.png" },
+      { name: "Arcelor Mittal", role: "Materials Partner", logo: "/partners/Arcelormittal-logo.svg.png" },
       { name: "Ansys", role: "Software Sponsor", logo: "/partners/ansys.png" },
       { name: "Altium", role: "Systems Sponsor", logo: "/partners/altium.png" },
       { name: "Vector", role: "CAN / Ethernet Tools Sponsor", logo: "/partners/vector.png" },
@@ -395,7 +395,7 @@ export default function PartnersPage() {
                 ref={(el) => {
                   if (el) versionRefs.current[idx] = el;
                 }}
-                className="inline-block px-8 py-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl backdrop-blur-sm mb-8"
+                className="inline-block px-8 py-400/10 rounded-2xl backdrop-blur-sm mb-8"
               >
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight bg-gradient-to-r from-green-400 via-white to-emerald-400 bg-clip-text text-transparent">
                   Edition {edition.version}
@@ -453,3 +453,4 @@ export default function PartnersPage() {
     </div>
   );
 }
+
