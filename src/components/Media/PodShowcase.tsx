@@ -9,11 +9,11 @@ const images = [
     "/media/image1.jpg",
     "/media/image2.jpg",
     "/media/image3.jpg",
-    "/media/image4.jpg",
+    "/media/image4.Jpg",
     "/media/image5.jpeg",
     "/media/image6.jpg",
-    "/media/image11.jpg",
-    "/media/image12.jpg",
+    "/media/image11.Jpg",
+    "/media/image12.Jpg",
 ];
 
 function PodModel({ scale = [1, 1, 1] }: { scale?: number[] }) {

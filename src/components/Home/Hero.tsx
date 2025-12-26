@@ -78,13 +78,14 @@ export default function Hero() {
 
           {/* ================= MAIN HEADLINE ================= */}
           <h1 className="
-            font-tech font-extrabold text-white tracking-tight leading-[0.78]
-            text-[clamp(2.9rem,15vw,9.1rem)]
+            font-tech font-extrabold text-white tracking-tight 
+            text-[clamp(2.5rem,13vw,9.5rem)]
+            leading-[0.9] sm:leading-[0.8] lg:leading-[0.78]
             drop-shadow-[0_20px_60px_rgba(0,0,0,0.85)]
           ">
             HYPERLOOP
             <br />
-            <span className="font-light block mt-2">
+            <span className="font-light block mt-1 sm:mt-2">
               FOR{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-500">
                 INDIA

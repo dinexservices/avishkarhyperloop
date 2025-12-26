@@ -4,7 +4,7 @@ import { Plus, ChevronDown } from 'lucide-react';
 const image1 = "/media/image1.jpg";
 const image2 = "/media/image2.jpg";
 const image3 = "/media/image3.jpg";
-const image4 = "/media/image4.jpg";
+const image4 = "/media/image4.Jpg";
 const image5 = "/media/image5.jpeg";
 const image6 = "/media/image6.jpg";
 const image7 = "/media/image7.jpg";
