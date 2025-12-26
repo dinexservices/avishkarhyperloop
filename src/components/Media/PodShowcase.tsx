@@ -32,7 +32,7 @@ function SceneContent() {
     const radius = isMobile ? 2.5 : 4.5;
     // Adjusted scales: Pod slightly bigger, Images smaller
     const podScale = isMobile ? [0.6, 0.6, 0.6] : [0.9, 0.9, 0.9];
-    const imgScale = isMobile ? [1.5, 1, 1] : [2.5, 1.5, 1];
+    const imgScale: [number, number] = isMobile ? [1.5, 1] : [2.5, 1.5];
 
     useFrame((state, delta) => {
         if (group.current) {
