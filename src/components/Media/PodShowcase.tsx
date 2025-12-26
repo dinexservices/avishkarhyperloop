@@ -9,7 +9,7 @@ const images = [
     "/media/image1.jpg",
     "/media/image2.jpg",
     "/media/image3.jpg",
-    "/media/image4.Jpg",
+  
     "/media/image5.jpeg",
     "/media/image6.jpg",
     "/media/image11.Jpg",
