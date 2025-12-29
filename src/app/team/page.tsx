@@ -243,7 +243,7 @@ export default function TeamPage() {
         ["NA / UNSPECIFIED", "5"],
         ["TEAM MEMBERS", "41"],
         ["SUB HEADS", "10"],
-        ["TEAM HEADS", "3"],
+        ["TEAM HEADS", "2"],
         ["OTHER / NA", "1"],
         ["ELECTRICAL", "13"],
         ["MECHANICAL", "8"],
